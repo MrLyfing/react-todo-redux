@@ -1,4 +1,4 @@
-# react-todo
+# react-todo-redux
 ReactJS Todo app with redux and bootstrap theme
 
 # Tools
