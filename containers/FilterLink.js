@@ -4,57 +4,28 @@
 
 
 import React from 'react';
-import { connect } from 'react-redux'
-import { setVisibilityFilter } from '../actions/visibilityFilter'
+import { Link } from 'react-router';
 
 class FilterLink extends React.Component {
-    onClickSetVisibilityFilter() {
-        let {filter, visibilityFilter} = this.props;
-        if (filter !== visibilityFilter)
-            this.props.setVisibilityFilter(filter);
-    }
 
     render() {
         console.log('FILTER LINK PROPS :', this.props);
-        let linkStyle = {
-            fontSize: '20px',
-            cursor: 'pointer'
-        };
-        let {filter, visibilityFilter} = this.props;
-
-        if (filter === visibilityFilter) {
-            linkStyle['fontWeight'] = '700';
-            linkStyle['fontSize'] = '25px';
-        }
-
+        let { filter } = this.props;
         return (
             <div class="text-center">
-                <a style={linkStyle} onClick={this.onClickSetVisibilityFilter.bind(this)}>
+                <Link
+                    to={filter === 'all' ? '' : filter}
+                    style={{ fontSize: '20px' }}
+                    activeStyle={{
+                        fontWeight: '700',
+                        fontSize: '25px'
+                    }}>
                     {this.props.children}
-                </a>
+                </Link>
             </div>
         )
     }
 }
-
-const mapStateToProps = (state) => {
-    return {
-        visibilityFilter: state.visibilityFilter
-    }
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setVisibilityFilter: (filter) => {
-            dispatch(setVisibilityFilter(filter))
-        }
-    }
-};
-
-FilterLink = connect(
-    mapStateToProps,
-    mapDispatchToProps)
-(FilterLink);
 
 export default FilterLink
 

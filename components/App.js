@@ -6,10 +6,11 @@ import React from 'react'
 
 import AddTodo from '../containers/Addtodo'
 import VisibleTodoList from '../containers/VisibleTodoList'
-import Links from '../components/Links'
+import Footer from './Footer'
 
 export default class App extends React.Component {
     render() {
+        const { filter } = this.props.params; //get from react router
         return (
             <div class="container-fluid">
                 <div class="row">
@@ -21,8 +22,8 @@ export default class App extends React.Component {
                 <div class="row" style={{marginTop: '15px'}}>
                     <div class="col-md-6 col-md-offset-3">
                         <AddTodo />
-                        <Links />
-                        <VisibleTodoList />
+                        <Footer />
+                        <VisibleTodoList /> {/* If null return 'all' */}
                     </div>
                 </div>
             </div>

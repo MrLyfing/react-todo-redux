@@ -11,13 +11,13 @@ export default class Links extends React.Component {
         return (
             <div class="row" style={{margin: '20px 0'}}>
                 <div class="col-md-4">
-                    <FilterLink filter="SHOW_ALL">All</FilterLink>
+                    <FilterLink filter="all">All</FilterLink>
                 </div>
                 <div class="col-md-4">
-                    <FilterLink filter="SHOW_ACTIVE">Active</FilterLink>
+                    <FilterLink filter="active">Active</FilterLink>
                 </div>
                 <div class="col-md-4">
-                    <FilterLink filter="SHOW_COMPLETED">Completed</FilterLink>
+                    <FilterLink filter="completed">Completed</FilterLink>
                 </div>
             </div>
         )

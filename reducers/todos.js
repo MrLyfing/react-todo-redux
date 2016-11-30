@@ -4,20 +4,7 @@
 
 import _ from 'underscore';
 
-const defaultTodos = [
-    {
-        id: 0,
-        task: 'Do the laundery',
-        completed: false
-    },
-    {
-        id: 1,
-        task: 'Clean the kitchen',
-        completed: false
-    }
-];
-
-const todos = (state = defaultTodos, action) => {
+const todos = (state = [], action) => {
 
     switch(action.type) {
         case 'ADD_TODO':
@@ -54,3 +41,24 @@ const todos = (state = defaultTodos, action) => {
 };
 
 export default todos;
+
+//Selector function
+export const getTodosFromFilter = (state, filter) => {
+
+    console.log('STATE :', state);
+    return state;
+    switch(filter) {
+        case 'all':
+            return state;
+        case 'active':
+            return state.filter((todo) => {
+                return !todo.completed;
+            });
+        case 'completed':
+            return state.filter((todo) => {
+                return todo.completed;
+            });
+        default:
+            return state;
+    }
+};

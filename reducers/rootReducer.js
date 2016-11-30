@@ -3,13 +3,15 @@
  */
 
 import { combineReducers } from 'redux'
-import todos from './todos'
-import visibilityFilter from './visibilityFilter'
+import todos, * as fromTodos from './todos'
 
 const rootReducer = combineReducers({
-    todos, //Equivalent to todos: todos
-    visibilityFilter
+    todos //Equivalent to todos: todos
 });
 
 export default rootReducer;
+
+export const getVisibleTodos = (state, filter) => {
+    return fromTodos.getTodosFromFilter(state, filter);
+};
 
